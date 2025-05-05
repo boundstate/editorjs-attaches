@@ -400,7 +400,7 @@ export default class AttachesTool {
   /**
    * If upload is successful, show info about the file
    */
-  async showFileData() {
+  showFileData() {
     this.nodes.wrapper.classList.add(this.CSS.wrapperWithFile);
 
     const { file, title } = this.data;
@@ -438,21 +438,31 @@ export default class AttachesTool {
     this.nodes.wrapper.appendChild(fileInfo);
 
     if (file.url !== undefined) {
-      let downloadInfo = {href: file.url};
-      const fileName = file.name || file.url.split("/").pop();
       if (this.config.downloader) {
-        downloadInfo.href = await this.config.downloader.download(file.url, file);
-        downloadInfo.download = fileName;
+        this.config.downloader.download(file.url, file).then((href) => {
+          this.showDownloadIcon({
+            href,
+            download: file.name,
+          });
+        });
+      } else {
+        this.showDownloadIcon({ href: file.url });
       }
-      const downloadIcon = make('a', this.CSS.downloadButton, {
-        innerHTML: IconChevronDown,
-        target: '_blank',
-        rel: 'nofollow noindex noreferrer',
-        ...downloadInfo
-      });
-
-      this.nodes.wrapper.appendChild(downloadIcon);
     }
+  }
+
+  /**
+   * @param {object} linkAttributes attributes on link element
+   */
+  showDownloadIcon(linkAttributes) {
+    const downloadIcon = make('a', this.CSS.downloadButton, {
+      innerHTML: IconChevronDown,
+      target: '_blank',
+      rel: 'nofollow noindex noreferrer',
+      ...linkAttributes,
+    });
+
+    this.nodes.wrapper.appendChild(downloadIcon);
   }
 
   /**
