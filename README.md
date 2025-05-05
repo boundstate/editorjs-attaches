@@ -13,14 +13,14 @@ You can get the package using any of these ways.
 ### Via NPM / Yarn
 
 ```shell
-npm install @editorjs/attaches
+npm install @boundstate/editorjs-attaches
 ```
 
 ### Load from CDN
 
-You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@editorjs/attaches).
+You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@boundstate/editorjs-attaches).
 
-`https://cdn.jsdelivr.net/npm/@editorjs/attaches@latest`
+`https://cdn.jsdelivr.net/npm/@boundstate/editorjs-attaches@latest`
 
 Then require this script on page with Editor.js through the `<script src=""></script>` tag.
 
@@ -29,7 +29,7 @@ Then require this script on page with Editor.js through the `<script src=""></sc
 Add a new Tool to the `tools` property of the Editor.js initial config.
 
 ```javascript
-import AttachesTool from '@editorjs/attaches';
+import AttachesTool from '@boundstate/editorjs-attaches';
 
 var editor = EditorJS({
   ...
@@ -137,7 +137,7 @@ The method return a Promise that resolves with response in a format that describ
 Example:
 
 ```js
-import AttachesTool from '@editorjs/attaches';
+import AttachesTool from '@boundstate/editorjs-attaches';
 
 var editor = EditorJS({
   ...
@@ -190,8 +190,7 @@ It is a quite simple: implement `download` method and pass them via `downloader`
 Example:
 
 ```js
-import ImageTool from '@editorjs/attaches';
-
+import AttachesTool from '@boundstate/editorjs-attaches';
 
 var editor = EditorJS({
     ...

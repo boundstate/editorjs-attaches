@@ -1,6 +1,6 @@
 {
-  "name": "@editorjs/attaches",
-  "version": "1.3.0",
+  "name": "@boundstate/editorjs-attaches",
+  "version": "1.4.0",
   "repository": "https://github.com/editor-js/attaches",
   "license": "MIT",
   "scripts": {
